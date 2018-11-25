@@ -2,7 +2,7 @@ package pl.net.ajka.warehouse.model.dao;
 
 import java.util.List;
 
-import org.hibernate.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;

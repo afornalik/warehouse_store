@@ -56,7 +56,7 @@
   <dependency>
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
-    <version>6.0.6</version>
+    <version>8.0.11</version>
 </dependency>
 
 <!-- Logging -->
@@ -80,6 +80,12 @@
 		<version>${org.slf4j-version}</version>
 		<scope>runtime</scope>
 	</dependency>
+	
+	 <dependency>
+        <groupId>commons-dbcp</groupId>
+        <artifactId>commons-dbcp</artifactId>
+        <version>1.4</version>
+    </dependency>
 	
 	<dependency>
 		<groupId>log4j</groupId>
@@ -107,6 +113,15 @@
 					
 		</exclusions>
 	</dependency>
+	
+	<!-- jstl -->
+	
+	<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
+
   </dependencies>
   <build>
     <plugins>

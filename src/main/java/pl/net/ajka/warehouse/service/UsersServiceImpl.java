@@ -1,4 +1,4 @@
-package pl.net.ajka.warehouse.model.service;
+package pl.net.ajka.warehouse.service;
 
 import java.util.List;
 
