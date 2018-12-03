@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import pl.net.ajka.warehouse.model.Test;
 import pl.net.ajka.warehouse.model.Users;
+import pl.net.ajka.warehouse.service.ItemsService;
 import pl.net.ajka.warehouse.service.TestService;
 import pl.net.ajka.warehouse.service.UsersService;
 
@@ -24,8 +26,14 @@ public class UsersController {
 	
 		private UsersService userService;
 		private TestService testService;
+		private ItemsService itemsService;
 		private Logger logger = LoggerFactory.getLogger(UsersController.class);
 		
+		@Autowired(required = true)
+		@Qualifier(value = "itemsService")
+		public void setItemsService(ItemsService is) {
+			this.itemsService= is;
+		}
 		
 		@Autowired(required = true)
 		@Qualifier(value = "userService")
@@ -39,6 +47,15 @@ public class UsersController {
 			this.testService = ts;
 		}
 		
+		
+		@RequestMapping(value="/items")
+		public String getItems(Model model) {
+			model.addAttribute("item1",itemsService.select(1).toString());
+			model.addAttribute("item2",itemsService.select(2).toString());
+			model.addAttribute("item3",itemsService.select(5).toString());
+			return "items";
+			
+		}
 		
 		@RequestMapping(value="/test", method=RequestMethod.GET)
 		public String goTest(Model model) {

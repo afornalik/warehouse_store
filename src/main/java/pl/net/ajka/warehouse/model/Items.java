@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,17 +22,23 @@ public class Items {
 	@Column(name="id_item")
 	private int id;
 	
-	@Column(name="id_item_kind")
-	private int idItemKind;
+	@ManyToOne
+	@JoinColumn(name="id_item_kind",foreignKey=@ForeignKey(name="items_ibfk_2"))
+	private ItemsKind idItemsKind;
 	
-	@Column(name="id_paleta")
-	private int idPaleta;
+
+	@ManyToOne
+	@JoinColumn(name="id_paleta",foreignKey=@ForeignKey(name="items_ibfk_3"))
+	private Palette idPaleta;
 	
-	@Column(name="add_date")
+	
+	@Column(name="add_date" )
 	private Date add_date;
 	
-	@Column(name="who_add")
-	private int idUsers;
+	
+	@ManyToOne()
+	@JoinColumn(name="who_add",foreignKey=@ForeignKey(name="items_ibfk_1"))
+	private Users who_add;
 
 	public int getId() {
 		return id;
@@ -39,19 +48,19 @@ public class Items {
 		this.id = id;
 	}
 
-	public int getIdItemKind() {
-		return idItemKind;
+	public ItemsKind getIdItemKind() {
+		return idItemsKind;
 	}
 
-	public void setIdItemKind(int idItemKind) {
-		this.idItemKind = idItemKind;
+	public void setIdItemKind(ItemsKind idItemKind) {
+		this.idItemsKind = idItemKind;
 	}
 
-	public int getIdPaleta() {
+	public Palette getIdPaleta() {
 		return idPaleta;
 	}
 
-	public void setIdPaleta(int idPaleta) {
+	public void setIdPaleta(Palette idPaleta) {
 		this.idPaleta = idPaleta;
 	}
 
@@ -63,13 +72,18 @@ public class Items {
 		this.add_date = add_date;
 	}
 
-	public int getIdUsers() {
-		return idUsers;
+	public Users getWhoAdd() {
+		return who_add;
 	}
 
-	public void setIdUsers(int idUsers) {
-		this.idUsers = idUsers;
+	public void setWhoAdd(Users who_add) {
+		this.who_add = who_add;
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "Items [id=" + id + ", idItemKind=" + idItemsKind + ", idPaleta=" + idPaleta + ", add_date=" + add_date
+				+ ", who_add=" + who_add + "]";
+	}
 }

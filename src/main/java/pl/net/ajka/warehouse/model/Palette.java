@@ -2,9 +2,11 @@ package pl.net.ajka.warehouse.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -39,8 +41,8 @@ public class Palette {
 	@Column(name="place")
 	private String place;
 	
-	@ManyToOne
-	@Column(name="who_add")
+	@ManyToOne()
+	@JoinColumn(name="who_add",foreignKey=@ForeignKey(name="paleta_ibfk_1"))
 	private Users users;
 
 	public int getId() {

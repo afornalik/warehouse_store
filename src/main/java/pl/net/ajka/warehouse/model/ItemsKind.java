@@ -4,9 +4,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -33,13 +35,13 @@ public class ItemsKind {
 	
 	
 	@ManyToOne
-	@Column(name="who_add")
-	private Users users;
+	@JoinColumn(name="who_add",foreignKey=@ForeignKey(name="items_kind_ibfk_1"))
+	private Users idUser;
 
 	@Override
 	public String toString() {
 		return "ItemsKind [id=" + id + ", indexCode=" + indexCode + ", name=" + name + ", family=" + family
-				+ ", addDate=" + addDate + "," + ", users=" + users + "]";
+				+ ", addDate=" + addDate + "," + ", users=" + idUser + "]";
 	}
 
 	public int getId() {
@@ -84,12 +86,12 @@ public class ItemsKind {
 
 
 
-	public Users getUsers() {
-		return users;
+	public Users getUser() {
+		return idUser;
 	}
 
-	public void setUsers(Users users) {
-		this.users = users;
+	public void setUser(Users idUser) {
+		this.idUser = idUser;
 	}
 
 }

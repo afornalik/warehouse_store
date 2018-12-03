@@ -3,7 +3,7 @@ package pl.net.ajka.warehouse.model;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,7 +33,7 @@ public class Users {
 	@Column(name="date_of_registration")
 	private Date dateOfRegistration;
 	
-	@OneToMany (targetEntity=ItemsKind.class )
+/*	@OneToMany (targetEntity=ItemsKind.class )
 	private List<ItemsKind> ItemsKindListUsers;
 
 	public List<ItemsKind> getItemsKindListUsers() {
@@ -42,7 +42,7 @@ public class Users {
 
 	public void setItemsKindListUsers(List<ItemsKind> itemsKindListUsers) {
 		ItemsKindListUsers = itemsKindListUsers;
-	}
+	}*/
 
 	public int getId() {
 		return id;

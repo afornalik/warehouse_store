@@ -35,8 +35,12 @@
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
 			<beans:list>
+				<beans:value>pl.net.ajka.warehouse.model.Items</beans:value>
 				<beans:value>pl.net.ajka.warehouse.model.Users</beans:value>
 				<beans:value>pl.net.ajka.warehouse.model.Test</beans:value>
+				<beans:value>pl.net.ajka.warehouse.model.ItemsKind</beans:value>
+				<beans:value>pl.net.ajka.warehouse.model.Palette</beans:value>
+				<beans:value>pl.net.ajka.warehouse.model.ItemsAmount</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties" >
@@ -64,7 +68,16 @@
 		<beans:property name="testDAO" ref="testDAO" >
 		</beans:property>
 	</beans:bean>	
-		
+
+	
+	<beans:bean id="itemsDAO" class="pl.net.ajka.warehouse.model.dao.ItemsDAOImpl" >
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="itemsService" class="pl.net.ajka.warehouse.service.ItemsServiceImpl" >
+		<beans:property name="itemsDAO" ref="itemsDAO" >
+		</beans:property>
+	</beans:bean>			
 	<context:component-scan base-package="pl.net.ajka.warehouse.controller" />
 	
 	<tx:annotation-driven transaction-manager="transactionManager" />
