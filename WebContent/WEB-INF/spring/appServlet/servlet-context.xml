@@ -31,7 +31,7 @@
 		<beans:property name="password" value="nimniul2" />
 	</beans:bean>		
 		
-	<beans:bean id="hibernate4AnnotatedSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" >
+	<beans:bean id="hibernate5AnnotatedSessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" >
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
 			<beans:list>
@@ -52,7 +52,7 @@
 	</beans:bean>
 	
 	<beans:bean id="usersDAO" class="pl.net.ajka.warehouse.model.dao.UsersDAOImpl" >
-		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+		<beans:property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
 	</beans:bean>
 
 	<beans:bean id="userService" class="pl.net.ajka.warehouse.service.UsersServiceImpl" >
@@ -61,7 +61,7 @@
 	</beans:bean>	
 	
 	<beans:bean id="testDAO" class="pl.net.ajka.warehouse.model.dao.TestDAOImpl" >
-		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+		<beans:property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
 	</beans:bean>
 
 	<beans:bean id="testService" class="pl.net.ajka.warehouse.service.TestServiceImpl" >
@@ -71,7 +71,7 @@
 
 	
 	<beans:bean id="itemsDAO" class="pl.net.ajka.warehouse.model.dao.ItemsDAOImpl" >
-		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+		<beans:property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
 	</beans:bean>
 
 	<beans:bean id="itemsService" class="pl.net.ajka.warehouse.service.ItemsServiceImpl" >
@@ -82,7 +82,7 @@
 	
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	
-	<beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	<beans:bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<beans:property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
 	</beans:bean>
 </beans:beans>
