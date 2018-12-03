@@ -15,7 +15,9 @@
 		
 	<annotation-driven />		
 	
-	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/resources/**" location="/WEB-INF/resources/" />
+	
+	
 	
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -23,8 +25,8 @@
 	</beans:bean>	
 		
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<beans:property name="url" value="jdbc:mysql://85.10.205.173/warehouse_store" />
+		<beans:property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<beans:property name="url" value="jdbc:mysql://85.10.205.173/warehouse_store" /> <!--  //jdbc:mysql://85.10.205.173/warehouse_store -->
 		<beans:property name="username" value="afornalik" />
 		<beans:property name="password" value="nimniul2" />
 	</beans:bean>		
@@ -33,7 +35,12 @@
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
 			<beans:list>
+				<beans:value>pl.net.ajka.warehouse.model.Items</beans:value>
 				<beans:value>pl.net.ajka.warehouse.model.Users</beans:value>
+				<beans:value>pl.net.ajka.warehouse.model.Test</beans:value>
+				<beans:value>pl.net.ajka.warehouse.model.ItemsKind</beans:value>
+				<beans:value>pl.net.ajka.warehouse.model.Palette</beans:value>
+				<beans:value>pl.net.ajka.warehouse.model.ItemsAmount</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties" >
@@ -51,8 +58,26 @@
 	<beans:bean id="userService" class="pl.net.ajka.warehouse.service.UsersServiceImpl" >
 		<beans:property name="usersDAO" ref="usersDAO" >
 		</beans:property>
-	</beans:bean>		
-		
+	</beans:bean>	
+	
+	<beans:bean id="testDAO" class="pl.net.ajka.warehouse.model.dao.TestDAOImpl" >
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="testService" class="pl.net.ajka.warehouse.service.TestServiceImpl" >
+		<beans:property name="testDAO" ref="testDAO" >
+		</beans:property>
+	</beans:bean>	
+
+	
+	<beans:bean id="itemsDAO" class="pl.net.ajka.warehouse.model.dao.ItemsDAOImpl" >
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="itemsService" class="pl.net.ajka.warehouse.service.ItemsServiceImpl" >
+		<beans:property name="itemsDAO" ref="itemsDAO" >
+		</beans:property>
+	</beans:bean>			
 	<context:component-scan base-package="pl.net.ajka.warehouse.controller" />
 	
 	<tx:annotation-driven transaction-manager="transactionManager" />
