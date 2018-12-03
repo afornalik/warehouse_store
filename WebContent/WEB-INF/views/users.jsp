@@ -15,34 +15,49 @@
 	
 	<c:url var="addAction" value="/users/add" ></c:url>
 	
-	<form:form action="${addAction}" commandName="user">
+	<form:form action="${addAction}" commandName="test2" method="post" >
 	<table>
-		<c:if test="${!empty user.firstName}">
-			<tr>
+	
+		<tr>
 				<td>
 					<form:label path="id">
 						<spring:message text="id" />
 					</form:label>
 				</td>
 				<td>
-					<form:input path="id" readonly="true" size="8" disabled="true" />
-					<form:hidden path="id" />
+					<form:input path="id"  size="8"  />
+					
 				</td>
-			</tr>
-		</c:if>
-		<tr>
 			<td>
 				<form:label path="firstName" >
-					<spring:message text="Name" />
+					<spring:message text="firstName" />
 				</form:label>
+				<form:input path="firstName"/>
 			</td>
 			<td>
-				<form:input path="firstName" />
+				<form:label path="lastName">
+					<spring:message text="lastName" />
+					
+				</form:label>
+				<form:input path="lastName" />
+				
 			</td>
-		</tr>
-		<tr>
 			<td>
-				<form:label path="lastName" />
+				<form:label path="password">
+					<spring:message text="password" />
+					
+				</form:label>
+				<form:input path="password" />
+				
+			</td>
+		
+			<td>
+				<form:label path="dateOfRegistration" >
+					<spring:message text="dateofregistration" />
+					
+				
+				</form:label>
+				<form:input path="dateOfRegistration" value="2017-11-20 01:00:00.0"/>		
 			</td>
 		</tr>
 		<tr>
