@@ -32,12 +32,6 @@ public class Palette {
 	@Column(name="size_y")
 	private int sizeY;
 	
-	@Override
-	public String toString() {
-		return "Palette [id=" + id + ", locX=" + locX + ", locY=" + locY + ", sizeX=" + sizeX + ", sizeY=" + sizeY
-				+ ", place=" + place + ", users=" + users + "]";
-	}
-
 	@Column(name="place")
 	private String place;
 	
@@ -45,9 +39,34 @@ public class Palette {
 	@JoinColumn(name="who_add",foreignKey=@ForeignKey(name="paleta_ibfk_1"))
 	private Users users;
 
+	
+	/*Constructors*/
+	
+	public Palette() {
+		super();
+	}
+	
+	
+	public Palette(int locX, int locY, int sizeX, int sizeY, String place, Users users) {
+		super();
+		this.locX = locX;
+		this.locY = locY;
+		this.sizeX = sizeX;
+		this.sizeY = sizeY;
+		this.place = place;
+		this.users = users;
+	}
+
+
+
+
+	/*Setters and Getters*/
+	
 	public int getId() {
 		return id;
 	}
+
+	
 
 	public void setId(int id) {
 		this.id = id;
@@ -99,5 +118,12 @@ public class Palette {
 
 	public void setUsers(Users users) {
 		this.users = users;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "Palette [id=" + id + ", locX=" + locX + ", locY=" + locY + ", sizeX=" + sizeX + ", sizeY=" + sizeY
+				+ ", place=" + place + ", users=" + users + "]";
 	}
 }

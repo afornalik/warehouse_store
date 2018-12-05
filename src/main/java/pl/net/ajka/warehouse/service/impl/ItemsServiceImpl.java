@@ -1,10 +1,11 @@
-package pl.net.ajka.warehouse.service;
+package pl.net.ajka.warehouse.service.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.net.ajka.warehouse.model.Items;
 import pl.net.ajka.warehouse.model.dao.ItemsDAO;
+import pl.net.ajka.warehouse.service.ItemsService;
 
 
 @Service

@@ -1,10 +1,11 @@
-package pl.net.ajka.warehouse.model.dao;
+package pl.net.ajka.warehouse.model.dao.impl;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import pl.net.ajka.warehouse.model.Items;
+import pl.net.ajka.warehouse.model.dao.ItemsDAO;
 
 @Repository
 public class ItemsDAOImpl implements ItemsDAO{

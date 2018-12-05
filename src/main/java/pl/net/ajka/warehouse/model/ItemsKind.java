@@ -33,17 +33,27 @@ public class ItemsKind {
 	@Column(name="add_date")
 	private Date addDate;
 	
-	
 	@ManyToOne
 	@JoinColumn(name="who_add",foreignKey=@ForeignKey(name="items_kind_ibfk_1"))
-	private Users idUser;
+	private Users users;
 
-	@Override
-	public String toString() {
-		return "ItemsKind [id=" + id + ", indexCode=" + indexCode + ", name=" + name + ", family=" + family
-				+ ", addDate=" + addDate + "," + ", users=" + idUser + "]";
+	/*Constructors*/
+	
+	public ItemsKind() {
+		super();
 	}
-
+	
+	public ItemsKind(int indexCode, String name, String family, Date addDate, Users users) {
+		this.indexCode = indexCode;
+		this.name = name;
+		this.family = family;
+		this.addDate = addDate;
+		this.users= users;
+	}
+	
+	
+	/*Setters and Getters*/
+	
 	public int getId() {
 		return id;
 	}
@@ -85,13 +95,19 @@ public class ItemsKind {
 	}
 
 
-
 	public Users getUser() {
-		return idUser;
+		return users;
 	}
 
 	public void setUser(Users idUser) {
-		this.idUser = idUser;
+		this.users = idUser;
 	}
 
+	
+	
+	@Override
+	public String toString() {
+		return "ItemsKind [id=" + id + ", indexCode=" + indexCode + ", name=" + name + ", family=" + family
+				+ ", addDate=" + addDate + "," + ", users=" + users + "]";
+	}
 }

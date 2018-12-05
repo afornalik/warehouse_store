@@ -16,7 +16,6 @@ import javax.persistence.Table;
 @Table(name="items")
 public class Items {
 
-	
 	@Id
 	@GeneratedValue (strategy=GenerationType.AUTO)
 	@Column(name="id_item")
@@ -26,20 +25,36 @@ public class Items {
 	@JoinColumn(name="id_item_kind",foreignKey=@ForeignKey(name="items_ibfk_2"))
 	private ItemsKind idItemsKind;
 	
-
 	@ManyToOne
 	@JoinColumn(name="id_paleta",foreignKey=@ForeignKey(name="items_ibfk_3"))
 	private Palette idPaleta;
 	
-	
 	@Column(name="add_date" )
 	private Date add_date;
-	
 	
 	@ManyToOne()
 	@JoinColumn(name="who_add",foreignKey=@ForeignKey(name="items_ibfk_1"))
 	private Users who_add;
 
+
+	/*Constructors*/
+	
+	public Items() {
+		
+	}
+		
+	public Items(ItemsKind idItemsKind, Palette idPaleta, Date add_date, Users who_add) {
+		
+		this.idItemsKind = idItemsKind;
+		this.idPaleta = idPaleta;
+		this.add_date = add_date;
+		this.who_add = who_add;
+	}
+
+
+	
+	/*Setters and Getters*/
+		
 	public int getId() {
 		return id;
 	}
@@ -79,6 +94,7 @@ public class Items {
 	public void setWhoAdd(Users who_add) {
 		this.who_add = who_add;
 	}
+	
 	
 	
 	@Override

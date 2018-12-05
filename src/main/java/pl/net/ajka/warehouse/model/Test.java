@@ -18,11 +18,12 @@ public class Test {
 	@Column(name="name")
 	private String name;
 
+		
+	/*Setters and Getters*/
+	
 	public int getId() {
 		return id;
 	}
-
-
 
 	public void setId(int id) {
 		this.id = id;
@@ -36,6 +37,7 @@ public class Test {
 		this.name = name;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Test [id=" + id + ", name=" + name + "]";

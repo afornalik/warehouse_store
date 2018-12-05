@@ -51,33 +51,6 @@
 		</beans:property>
 	</beans:bean>
 	
-	<beans:bean id="usersDAO" class="pl.net.ajka.warehouse.model.dao.UsersDAOImpl" >
-		<beans:property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
-	</beans:bean>
-
-	<beans:bean id="userService" class="pl.net.ajka.warehouse.service.UsersServiceImpl" >
-		<beans:property name="usersDAO" ref="usersDAO" >
-		</beans:property>
-	</beans:bean>	
-	
-	<beans:bean id="testDAO" class="pl.net.ajka.warehouse.model.dao.TestDAOImpl" >
-		<beans:property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
-	</beans:bean>
-
-	<beans:bean id="testService" class="pl.net.ajka.warehouse.service.TestServiceImpl" >
-		<beans:property name="testDAO" ref="testDAO" >
-		</beans:property>
-	</beans:bean>	
-
-	
-	<beans:bean id="itemsDAO" class="pl.net.ajka.warehouse.model.dao.ItemsDAOImpl" >
-		<beans:property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
-	</beans:bean>
-
-	<beans:bean id="itemsService" class="pl.net.ajka.warehouse.service.ItemsServiceImpl" >
-		<beans:property name="itemsDAO" ref="itemsDAO" >
-		</beans:property>
-	</beans:bean>			
 	<context:component-scan base-package="pl.net.ajka.warehouse.controller" />
 	
 	<tx:annotation-driven transaction-manager="transactionManager" />
@@ -85,4 +58,60 @@
 	<beans:bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<beans:property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
 	</beans:bean>
+	
+	<!-- Beans of DAOImpl class -->
+	
+	<!-- UserDAOImpl -->
+	<beans:bean id="usersDAO" class="pl.net.ajka.warehouse.model.dao.impl.UsersDAOImpl" >
+		<beans:property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="userService" class="pl.net.ajka.warehouse.service.impl.UsersServiceImpl" >
+		<beans:property name="usersDAO" ref="usersDAO" />
+	</beans:bean>	
+	
+	<!-- TestDAOImpl -->
+	<beans:bean id="testDAO" class="pl.net.ajka.warehouse.model.dao.impl.TestDAOImpl" >
+		<beans:property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="testService" class="pl.net.ajka.warehouse.service.impl.TestServiceImpl" >
+		<beans:property name="testDAO" ref="testDAO" />
+	</beans:bean>	
+
+	<!-- ItemsDAOImpl -->
+	<beans:bean id="itemsDAO" class="pl.net.ajka.warehouse.model.dao.impl.ItemsDAOImpl" >
+		<beans:property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="itemsService" class="pl.net.ajka.warehouse.service.impl.ItemsServiceImpl" >
+		<beans:property name="itemsDAO" ref="itemsDAO" />
+	</beans:bean>			
+
+	<!-- ItemsAmountDAOImpl -->
+	<beans:bean id="itemsAmountDAO" class="pl.net.ajka.warehouse.model.dao.impl.ItemsAmountDAOImpl" >
+		<beans:property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="itemsAmountService" class="pl.net.ajka.warehouse.service.impl.ItemsAmountServiceImpl" >
+		<beans:property name="itemsAmountDAO" ref="itemsAmountDAO" />
+	</beans:bean>	
+	
+	<!-- ItemsKindDAOImpl -->
+	<beans:bean id="itemsKindDAO" class="pl.net.ajka.warehouse.model.dao.impl.ItemsKindDAOImpl" >
+		<beans:property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="itemsKindService" class="pl.net.ajka.warehouse.service.impl.ItemsKindServiceImpl" >
+		<beans:property name="itemsKindDAO" ref="itemsKindDAO" />
+	</beans:bean>	
+	
+	<!-- ItemsAmountDAOImpl -->
+	<beans:bean id="paletteDAO" class="pl.net.ajka.warehouse.model.dao.impl.PaletteDAOImpl" >
+		<beans:property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="paletteService" class="pl.net.ajka.warehouse.service.impl.PaletteServiceImpl" >
+		<beans:property name="paletteDAO" ref="paletteDAO" />
+	</beans:bean>	
 </beans:beans>
