@@ -1,4 +1,4 @@
-package pl.net.ajka.warehouse.service;
+package pl.net.ajka.warehouse.service.impl;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pl.net.ajka.warehouse.model.Test;
 import pl.net.ajka.warehouse.model.dao.TestDAO;
+import pl.net.ajka.warehouse.service.TestService;
 
 @Service
 public class TestServiceImpl implements TestService {

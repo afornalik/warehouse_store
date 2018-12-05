@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,8 +22,9 @@ public class ItemsAmount {
 	@Column (name="id_amount")
 	private int idItemsAmount;
 	
-	@Column(name="id_item")
-	private int idItem;
+	@ManyToOne
+	@JoinColumn(name="id_item", foreignKey=@ForeignKey(name="items_amount_ibfk_2"))
+	private Items items;
 	
 	@Column(name="amount")
 	private int amount;
@@ -28,9 +32,29 @@ public class ItemsAmount {
 	@Column(name="date_of_modification")
 	private Date dateOfModification;
 	
-	@Column(name="who_add")
-	private int idUser;
+	@ManyToOne
+	@JoinColumn(name="who_add",foreignKey=@ForeignKey(name="items_amount_ibfk_1"))
+	private Users users;
 
+
+	
+	/*Constructors*/
+	
+	public ItemsAmount() {
+		super();
+		
+	}
+
+	public ItemsAmount(Items items, int amount, Date dateOfModification, Users users) {
+		this.items = items;
+		this.amount = amount;
+		this.dateOfModification = dateOfModification;
+		this.users = users;
+	}
+
+	
+	/*Setters and Getters*/
+	
 	public int getIdItemsAmount() {
 		return idItemsAmount;
 	}
@@ -39,12 +63,12 @@ public class ItemsAmount {
 		this.idItemsAmount = idItemsAmount;
 	}
 
-	public int getIdItem() {
-		return idItem;
+	public Items getIdItem() {
+		return items;
 	}
 
-	public void setIdItem(int idItem) {
-		this.idItem = idItem;
+	public void setIdItem(Items items) {
+		this.items = items;
 	}
 
 	public int getAmount() {
@@ -63,18 +87,21 @@ public class ItemsAmount {
 		this.dateOfModification = dateOfModification;
 	}
 
-	public int getIdUser() {
-		return idUser;
+	public Users getIdUser() {
+		return users;
 	}
 
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
+	public void setIdUser(Users users) {
+		this.users = users;
 	}
 
+	
+		
+	
 	@Override
 	public String toString() {
-		return "ItemsAmount [idItemsAmount=" + idItemsAmount + ", idItem=" + idItem + ", amount=" + amount
-				+ ", dateOfModification=" + dateOfModification + ", idUser=" + idUser + "]";
+		return "ItemsAmount [idItemsAmount=" + idItemsAmount + ", idItem=" + items + ", amount=" + amount
+				+ ", dateOfModification=" + dateOfModification + ", idUser=" + users + "]";
 	}
 	
 	

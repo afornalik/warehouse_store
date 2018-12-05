@@ -1,4 +1,4 @@
-package pl.net.ajka.warehouse.model.dao;
+package pl.net.ajka.warehouse.model.dao.impl;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import pl.net.ajka.warehouse.model.Test;
+import pl.net.ajka.warehouse.model.dao.TestDAO;
 
 @Repository
 public class TestDAOImpl implements TestDAO {

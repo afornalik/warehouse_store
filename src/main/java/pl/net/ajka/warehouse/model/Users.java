@@ -1,7 +1,6 @@
 package pl.net.ajka.warehouse.model;
 
 import java.util.Date;
-import java.util.List;
 
 
 import javax.persistence.Column;
@@ -9,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -44,10 +42,29 @@ public class Users {
 		ItemsKindListUsers = itemsKindListUsers;
 	}*/
 
+	/*Constructors*/
+	
+	public Users() {
+		super();
+	}
+	
+	
+	public Users(String firstName, String lastName, String password, Date dateOfRegistration) {
+	super();
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.password = password;
+	this.dateOfRegistration = dateOfRegistration;
+}
+
+
+	/*Setters and Getters*/
+	
 	public int getId() {
 		return id;
 	}
 
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -84,6 +101,7 @@ public class Users {
 		this.dateOfRegistration = dateOfRegistration;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Users [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dateOfRegistration="
