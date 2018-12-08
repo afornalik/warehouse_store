@@ -50,9 +50,7 @@ public class UsersController {
 		
 		@RequestMapping(value="/items")
 		public String getItems(Model model) {
-			model.addAttribute("item1",itemsService.select(1).toString());
-			model.addAttribute("item2",itemsService.select(2).toString());
-			model.addAttribute("item3",itemsService.select(5).toString());
+			model.addAttribute("item1",itemsService.selectAllItemsValues(2));
 			return "items";
 			
 		}

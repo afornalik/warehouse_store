@@ -1,15 +1,20 @@
 package pl.net.ajka.warehouse.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -37,8 +42,19 @@ public class ItemsKind {
 	@JoinColumn(name="who_add",foreignKey=@ForeignKey(name="items_kind_ibfk_1"))
 	private Users users;
 
+
+	@OneToMany(mappedBy="idItemsKind", fetch=FetchType.EAGER)
+	private Set<Items> items;
+	
+	@ManyToMany()
+	@JoinTable(name="itemsKindToPalette", joinColumns= @JoinColumn(name="idItemsKind",referencedColumnName="id_item_kind"),
+							inverseJoinColumns=@JoinColumn(name="idPaleta",referencedColumnName="id_paleta"))
+	private Set<Palette> palette;
+	
 	/*Constructors*/
 	
+	
+
 	public ItemsKind() {
 		super();
 	}
@@ -101,6 +117,22 @@ public class ItemsKind {
 
 	public void setUser(Users idUser) {
 		this.users = idUser;
+	}
+
+	public Set<Items> getItems() {
+		return items;
+	}
+
+	public void setItems(Set<Items> items) {
+		this.items = items;
+	}
+	
+	public Set<Palette> getPalette() {
+		return palette;
+	}
+
+	public void setPalette(Set<Palette> palette) {
+		this.palette = palette;
 	}
 
 	
