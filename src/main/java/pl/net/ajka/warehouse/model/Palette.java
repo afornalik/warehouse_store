@@ -1,13 +1,18 @@
 package pl.net.ajka.warehouse.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -39,9 +44,15 @@ public class Palette {
 	@JoinColumn(name="who_add",foreignKey=@ForeignKey(name="paleta_ibfk_1"))
 	private Users users;
 
+	@OneToMany(mappedBy="idPaleta", fetch=FetchType.EAGER)
+	private Set<Items> items;
+	
+	@ManyToMany(mappedBy="palette")
+	private Set<ItemsKind> itemsKind;
 	
 	/*Constructors*/
 	
+
 	public Palette() {
 		super();
 	}
@@ -119,6 +130,25 @@ public class Palette {
 	public void setUsers(Users users) {
 		this.users = users;
 	}
+	
+	public Set<Items> getItems() {
+		return items;
+	}
+
+	public void setItems(Set<Items> items) {
+		this.items = items;
+	}
+	
+	public Set<ItemsKind> getItemsKind() {
+		return itemsKind;
+	}
+
+
+	public void setItemsKind(Set<ItemsKind> itemsKind) {
+		this.itemsKind = itemsKind;
+	}
+
+
 	
 	
 	@Override
