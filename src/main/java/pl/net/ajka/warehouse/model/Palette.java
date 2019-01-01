@@ -37,17 +37,18 @@ public class Palette {
 	@Column(name="size_y")
 	private int sizeY;
 	
-	@Column(name="place")
-	private String place;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="place",foreignKey=@ForeignKey(name="paleta_ibfk_2"))
+	private PaletteLocalization place;
 	
-	@ManyToOne()
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="who_add",foreignKey=@ForeignKey(name="paleta_ibfk_1"))
 	private Users users;
 
-	@OneToMany(mappedBy="idPaleta", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="idPaleta", fetch=FetchType.LAZY)
 	private Set<Items> items;
 	
-	@ManyToMany(mappedBy="palette")
+	@ManyToMany(mappedBy="palette", fetch=FetchType.LAZY)
 	private Set<ItemsKind> itemsKind;
 	
 	/*Constructors*/
@@ -58,7 +59,7 @@ public class Palette {
 	}
 	
 	
-	public Palette(int locX, int locY, int sizeX, int sizeY, String place, Users users) {
+	public Palette(int locX, int locY, int sizeX, int sizeY, PaletteLocalization place, Users users) {
 		super();
 		this.locX = locX;
 		this.locY = locY;
@@ -115,11 +116,11 @@ public class Palette {
 		this.sizeY = sizeY;
 	}
 
-	public String getPlace() {
+	public PaletteLocalization getPlace() {
 		return place;
 	}
 
-	public void setPlace(String place) {
+	public void setPlace( PaletteLocalization place) {
 		this.place = place;
 	}
 

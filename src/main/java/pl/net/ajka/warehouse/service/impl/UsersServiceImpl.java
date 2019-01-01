@@ -46,8 +46,8 @@ public class UsersServiceImpl implements UsersService{
 
 	@Override
 	@Transactional
-	public Users getUserById(int id) {
-		return this.usersDAO.getUserById(id);
+	public Users select(int id) {
+		return this.usersDAO.select(id);
 	}
 
 }

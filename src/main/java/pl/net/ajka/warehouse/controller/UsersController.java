@@ -14,20 +14,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import pl.net.ajka.warehouse.model.Palette;
 import pl.net.ajka.warehouse.model.Test;
 import pl.net.ajka.warehouse.model.Users;
+import pl.net.ajka.warehouse.service.ItemsAmountService;
 import pl.net.ajka.warehouse.service.ItemsService;
+import pl.net.ajka.warehouse.service.PaletteService;
 import pl.net.ajka.warehouse.service.TestService;
 import pl.net.ajka.warehouse.service.UsersService;
 
 @Controller
 public class UsersController {
 
-	
+		private ItemsAmountService itemsAmountService;
 		private UsersService userService;
 		private TestService testService;
 		private ItemsService itemsService;
+		private PaletteService paletteService;
 		private Logger logger = LoggerFactory.getLogger(UsersController.class);
+		
+		@Autowired(required = true)
+		@Qualifier(value = "paletteService")
+		public void setPaletteService(PaletteService ps) {
+			this.paletteService = ps;
+		}
 		
 		@Autowired(required = true)
 		@Qualifier(value = "itemsService")
@@ -47,10 +57,22 @@ public class UsersController {
 			this.testService = ts;
 		}
 		
+		@Autowired(required= true)
+		@Qualifier(value ="itemsAmountService")
+		public void setItemsAmountService( ItemsAmountService ia) {
+			this.itemsAmountService = ia;
+		}
 		
 		@RequestMapping(value="/items")
 		public String getItems(Model model) {
-			model.addAttribute("item1",itemsService.selectAllItemsValues(2));
+			
+			/*model.addAttribute("idOfAllPallet",itemsService.selectAllPaletteId());
+			model.addAttribute("item1",itemsService.selectAllItemsNameFromPallete(4));
+			model.addAttribute("item1",itemsService.selectAllItemsNameFromPallete(3));
+			model.addAttribute("item1",itemsService.selectAllItemsNameFromPallete(1));
+			*/
+			model.addAttribute("placelist",paletteService.getAllLocalisations());
+			model.addAttribute("item2",itemsService.selectAllPaletteIdAndItemsName());
 			return "items";
 			
 		}
@@ -123,7 +145,7 @@ public class UsersController {
 		
 		@RequestMapping("/edit/{id}")
 		public String editUser(@PathVariable("id") int id,Model model) {
-			model.addAttribute("user" , this.userService.getUserById(id));
+			model.addAttribute("user" , this.userService.select(id));
 			model.addAttribute("listUser" , this.userService.userlist());
 			return "users";
 		}

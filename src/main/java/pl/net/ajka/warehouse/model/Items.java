@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,22 +26,22 @@ public class Items {
 	@Column(name="id_item")
 	private int id;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_item_kind",foreignKey=@ForeignKey(name="items_ibfk_2"))
 	private ItemsKind idItemsKind;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_paleta",foreignKey=@ForeignKey(name="items_ibfk_3"))
 	private Palette idPaleta;
 	
 	@Column(name="add_date" )
 	private Date addDate;
 	
-	@ManyToOne()
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="who_add",foreignKey=@ForeignKey(name="items_ibfk_1"))
 	private Users whoAdd;
 
-	@OneToMany(mappedBy="items" , fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="items" , fetch=FetchType.LAZY, cascade=CascadeType.REMOVE)
 	private Set<ItemsAmount> itemsAmount;
 	
 	/*Constructors*/

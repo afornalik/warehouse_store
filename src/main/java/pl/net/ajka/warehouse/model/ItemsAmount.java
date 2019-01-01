@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +23,7 @@ public class ItemsAmount {
 	@Column (name="id_amount")
 	private int idItemsAmount;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_item", foreignKey=@ForeignKey(name="items_amount_ibfk_2"))
 	private Items items;
 	
@@ -32,7 +33,7 @@ public class ItemsAmount {
 	@Column(name="date_of_modification")
 	private Date dateOfModification;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="who_add",foreignKey=@ForeignKey(name="items_amount_ibfk_1"))
 	private Users users;
 
