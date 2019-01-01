@@ -65,7 +65,7 @@ public class UsersDAOImpl implements UsersDAO{
 	}
 
 	@Override
-	public Users getUserById(int id) {
+	public Users select(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
 		Users u  = (Users) session.load(Users.class, new Integer(id));
 		logger.info("User loaded successfully, Users detail = " + u);

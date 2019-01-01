@@ -3,6 +3,7 @@ package pl.net.ajka.warehouse.service.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pl.net.ajka.warehouse.model.Items;
 import pl.net.ajka.warehouse.model.ItemsAmount;
 import pl.net.ajka.warehouse.model.dao.ItemsAmountDAO;
 import pl.net.ajka.warehouse.service.ItemsAmountService;
@@ -20,6 +21,12 @@ public class ItemsAmountServiceImpl implements ItemsAmountService{
 	@Override
 	public ItemsAmount select(int id) {
 		return itemsAmountDAO.select(id);
+	}
+
+	@Transactional
+	@Override
+	public ItemsAmount selectActualItemAmount(Items items) {
+		return itemsAmountDAO.selectActualItemAmount(items);
 	}
 
 }

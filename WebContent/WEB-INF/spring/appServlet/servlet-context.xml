@@ -26,9 +26,9 @@
 		
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<beans:property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-		<beans:property name="url" value="jdbc:mysql://85.10.205.173/warehouse_store" /> <!--  //jdbc:mysql://85.10.205.173/warehouse_store -->
-		<beans:property name="username" value="afornalik" />
-		<beans:property name="password" value="nimniul2" />
+		<beans:property name="url" value="jdbc:mysql://127.0.0.1:3306/ajka?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw&amp;useSSL=false" /> <!--  //jdbc:mysql://85.10.205.173/warehouse_store -->
+		<beans:property name="username" value="root" />
+		<beans:property name="password" value="" />
 	</beans:bean>		
 		
 	<beans:bean id="hibernate5AnnotatedSessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" >
@@ -40,6 +40,7 @@
 				<beans:value>pl.net.ajka.warehouse.model.Test</beans:value>
 				<beans:value>pl.net.ajka.warehouse.model.ItemsKind</beans:value>
 				<beans:value>pl.net.ajka.warehouse.model.Palette</beans:value>
+				<beans:value>pl.net.ajka.warehouse.model.PaletteLocalization</beans:value>
 				<beans:value>pl.net.ajka.warehouse.model.ItemsAmount</beans:value>
 			</beans:list>
 		</beans:property>
@@ -106,12 +107,21 @@
 		<beans:property name="itemsKindDAO" ref="itemsKindDAO" />
 	</beans:bean>	
 	
-	<!-- ItemsAmountDAOImpl -->
+	<!-- ItemsPaletteDAOImpl -->
 	<beans:bean id="paletteDAO" class="pl.net.ajka.warehouse.model.dao.impl.PaletteDAOImpl" >
 		<beans:property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
 	</beans:bean>
 
 	<beans:bean id="paletteService" class="pl.net.ajka.warehouse.service.impl.PaletteServiceImpl" >
 		<beans:property name="paletteDAO" ref="paletteDAO" />
+	</beans:bean>	
+	
+	<!-- ItemsPaletteLocalizationDAOImpl -->
+	<beans:bean id="paletteLocalizationDAO" class="pl.net.ajka.warehouse.model.dao.impl.PaletteLocalizationDAOImpl" >
+		<beans:property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="paletteLocalizationService" class="pl.net.ajka.warehouse.service.impl.PaletteLocalizationServiceImpl" >
+		<beans:property name="paletteLocalizationDAO" ref="paletteLocalizationDAO" />
 	</beans:bean>	
 </beans:beans>

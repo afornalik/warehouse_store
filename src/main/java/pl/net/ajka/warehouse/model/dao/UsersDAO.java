@@ -14,7 +14,7 @@ public interface UsersDAO {
 	
 	public void updateUser(Users u);
 	
-	public Users getUserById(int id);
+	public Users select(int id);
 	
 
 }

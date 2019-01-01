@@ -33,16 +33,16 @@ public class Users {
 	@Column(name="date_of_registration")
 	private Date dateOfRegistration;
 	
-	@OneToMany(mappedBy="whoAdd",fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="whoAdd",fetch=FetchType.LAZY)
 	private Set<Items> whoAddItems;
 	
-	@OneToMany(mappedBy="users", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="users", fetch=FetchType.LAZY)
 	private Set<ItemsAmount> whoAddItemsAmount;
 	
-	@OneToMany(mappedBy="users", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="users", fetch=FetchType.LAZY)
 	private Set<ItemsKind> whoAddItemsKind;
 	
-	@OneToMany(mappedBy="users" , fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="users" , fetch=FetchType.LAZY)
 	private Set<Palette> whoAddPalette;
 	
 	/*Constructors*/

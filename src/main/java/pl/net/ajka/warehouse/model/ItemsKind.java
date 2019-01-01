@@ -38,15 +38,15 @@ public class ItemsKind {
 	@Column(name="add_date")
 	private Date addDate;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="who_add",foreignKey=@ForeignKey(name="items_kind_ibfk_1"))
 	private Users users;
 
 
-	@OneToMany(mappedBy="idItemsKind", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="idItemsKind", fetch=FetchType.LAZY)
 	private Set<Items> items;
 	
-	@ManyToMany()
+	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(name="itemsKindToPalette", joinColumns= @JoinColumn(name="idItemsKind",referencedColumnName="id_item_kind"),
 							inverseJoinColumns=@JoinColumn(name="idPaleta",referencedColumnName="id_paleta"))
 	private Set<Palette> palette;
