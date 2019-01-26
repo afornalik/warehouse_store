@@ -36,4 +36,10 @@ public class PaletteServiceImpl implements PaletteService{
 		return paletteDAO.getAllLocalisations();
 	}
 
+	@Transactional
+	@Override
+	public List<Palette> selectByTheShelf(int paletteLocalizationId) {
+		return paletteDAO.selectByTheShelf(paletteLocalizationId);
+	}
+
 }

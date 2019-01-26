@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+table {
+	 border-collapse: collapse;
+    border-spacing: 0;
+}
+td{
+	
+	padding:0px;
+	margin: 0px;
+}
+
+.shelves {
+	margin:0;
+	padding:0;
+	border: none;
+	
+}
+
+.paletteHolder {
+	margin:0;
+	padding:0;
+	border: none;
+	border-top: solid 10px orange;
+	height: 160px;
+	width: 120px;
+}
+
+.verticalRule {
+	margin:0;
+	padding:0;
+	border-top: solid 10px orange;
+	height:160px;
+	width:10px;
+	background-color: blue;
+}
+
+.thePalette {
+	height:100%;
+	width:100%;
+	background-color:gray;
+}
+
+

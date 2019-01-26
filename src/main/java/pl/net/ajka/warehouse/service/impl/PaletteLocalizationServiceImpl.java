@@ -1,5 +1,7 @@
 package pl.net.ajka.warehouse.service.impl;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +22,18 @@ public class PaletteLocalizationServiceImpl implements PaletteLocalizationServic
 	@Override
 	public PaletteLocalization select(int id) {
 		return paletteLocalizationDAO.select(id);
+	}
+
+	@Transactional
+	@Override
+	public PaletteLocalization[] selectAll() {
+		return paletteLocalizationDAO.selectAll();
+	}
+
+	@Transactional
+	@Override
+	public Map<Integer, String> selectAllName() {
+		return paletteLocalizationDAO.selectAllName();
 	}
 
 	
