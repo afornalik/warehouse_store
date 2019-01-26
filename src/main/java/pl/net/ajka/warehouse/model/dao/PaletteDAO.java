@@ -8,6 +8,8 @@ public interface PaletteDAO {
 
 	public Palette select(int id);
 	
+	public List<Palette> selectByTheShelf(int paletteLocalizationId);
+	
 	public List<String> getItemsNameOnPallete(int id);
 	
 	public List<String> getAllLocalisations();

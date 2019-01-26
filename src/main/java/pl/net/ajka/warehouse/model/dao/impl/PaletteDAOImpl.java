@@ -46,4 +46,12 @@ public class PaletteDAOImpl implements PaletteDAO{
 		return (List<String>) session.createQuery("SELECT DISTINCT pal.place FROM Palette pal").getResultList();
 	}
 
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Palette> selectByTheShelf(int paletteLocalizationId) {
+		
+		return (List<Palette>) sessionFactory.getCurrentSession().createQuery("FROM Palette pal  JOIN FETCH pal.items item JOIN FETCH item.idItemsKind itkind JOIN  FETCH pal.itemsKind JOIN FETCH item.whoAdd WHERE pal.id = item.idPaleta AND pal.place.id =:paletteLocalizationId").setParameter("paletteLocalizationId", paletteLocalizationId).getResultList();
+	}
+
 }

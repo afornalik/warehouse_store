@@ -37,11 +37,11 @@ public class Palette {
 	@Column(name="size_y")
 	private int sizeY;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="place",foreignKey=@ForeignKey(name="paleta_ibfk_2"))
 	private PaletteLocalization place;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="who_add",foreignKey=@ForeignKey(name="paleta_ibfk_1"))
 	private Users users;
 
