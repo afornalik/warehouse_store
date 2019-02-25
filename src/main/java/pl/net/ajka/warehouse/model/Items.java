@@ -72,12 +72,12 @@ public class Items {
 		this.id = id;
 	}
 
-	public ItemsKind getIdItemKind() {
+	public ItemsKind getIdItemsKind() {
 		return idItemsKind;
 	}
 
-	public void setIdItemKind(ItemsKind idItemKind) {
-		this.idItemsKind = idItemKind;
+	public void setIdItemsKind(ItemsKind idItemsKind) {
+		this.idItemsKind = idItemsKind;
 	}
 
 	public Palette getIdPaleta() {
@@ -88,11 +88,13 @@ public class Items {
 		this.idPaleta = idPaleta;
 	}
 
-	public Date getAdd_date() {
+	
+
+	public Date getAddDate() {
 		return addDate;
 	}
 
-	public void setAdd_date(Date addDate) {
+	public void setAddDate(Date addDate) {
 		this.addDate = addDate;
 	}
 

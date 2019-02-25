@@ -1,5 +1,6 @@
 package pl.net.ajka.warehouse.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -17,9 +18,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="paleta")
-public class Palette {
+public class Palette implements Serializable {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id_paleta")
@@ -37,11 +43,11 @@ public class Palette {
 	@Column(name="size_y")
 	private int sizeY;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="place",foreignKey=@ForeignKey(name="paleta_ibfk_2"))
 	private PaletteLocalization place;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="who_add",foreignKey=@ForeignKey(name="paleta_ibfk_1"))
 	private Users users;
 
@@ -155,6 +161,6 @@ public class Palette {
 	@Override
 	public String toString() {
 		return "Palette [id=" + id + ", locX=" + locX + ", locY=" + locY + ", sizeX=" + sizeX + ", sizeY=" + sizeY
-				+ ", place=" + place + ", users=" + users + "]";
+				+ "\n, place=" + place + "\n, users=" + users + "]\n";
 	}
 }

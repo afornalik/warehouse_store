@@ -29,42 +29,75 @@
 
 	</form>
 		</c:forEach>
-		<c:forEach items="${paletteListOnTheShelf}" var="shel">
-			${shel}
-		</c:forEach>
+		
 	<p>
+<form action="/warehouse_store/addpalette" method="post" >
+	
+	
 		<c:if  test="${not empty newSelectedShelve}">
+		<fieldset  id="axis">
+		
 			<table class="shelves" >
+				
 			<c:forEach var="stat" begin="1" end="${newSelectedShelve.getRows()}" >
 				<tr class="shelves">
 				<td class="verticalRule"></td>
 					<c:forEach   var="stat2" begin="1" end="${newSelectedShelve.getColumns()}" >
 						
 						<td class="paletteHolder"> <%-- ${stat} - ${stat2} --%>
+						<c:set value="false" var="oneButton" />
 						<c:forEach items="${paletteListOnTheShelf}" var="pal">
-							<c:if test="${pal.getLocX() == stat2 && pal.getLocY() == stat}">
 							
-								<c:forEach items="${pal.getItemsKind()}" var="items" varStatus="loop"    >
-									<div class="thePalette">
-								  ${items.getName()} 
-								  	</div>
+							<c:choose>
+								<c:when test="${pal.getLocX() == stat2 && pal.getLocY() == stat}">
+								<div class="thePalette">
+								<ul>
+								<c:forEach items="${pal.getItems()}" var="items" varStatus="loop"    >
+									
+								
+								 
+								 <li> ${items.getIdItemsKind().getName()} </li>
+								  	 
 								  	
 								 </c:forEach>
+								 </ul>
+								 <input type="submit" value="zmień">
+								 <c:set var="oneButton" value="true" />
+							</div>
+							</c:when>
+							<c:otherwise>
+								<c:if test="${oneButton == false}">
+									<%-- <input type="radio"   ${stat2}"  name="axisX"> --%>
+								
+									<input type="submit" name="axis"   value="${stat}, ${stat2}, ${pal.getPlace().getId()}">
+									<c:set var="oneButton" value="true"  />								
+								</c:if>
+							</c:otherwise>
+							</c:choose>
 							
-							</c:if>
 						</c:forEach>
+						
 						<c:if test="${stat2 % 3 == 0}">
-							<td class="verticalRule"></td>
+							<td class="verticalRule">
+							
+							</td>
 						</c:if>
+						
 						</td>
 					</c:forEach>
 					
 				</tr>
-				
+			
 		</c:forEach>
+				
 	</table>
+	</fieldset>
+	
 		</c:if>
-	</p>
+		
+	
+	</form>
+
 	
 	
 </body>

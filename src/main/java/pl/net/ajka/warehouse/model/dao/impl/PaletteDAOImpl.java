@@ -1,5 +1,6 @@
 package pl.net.ajka.warehouse.model.dao.impl;
 
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -51,7 +52,21 @@ public class PaletteDAOImpl implements PaletteDAO{
 	@Override
 	public List<Palette> selectByTheShelf(int paletteLocalizationId) {
 		
-		return (List<Palette>) sessionFactory.getCurrentSession().createQuery("FROM Palette pal  JOIN FETCH pal.items item JOIN FETCH item.idItemsKind itkind JOIN  FETCH pal.itemsKind JOIN FETCH item.whoAdd WHERE pal.id = item.idPaleta AND pal.place.id =:paletteLocalizationId").setParameter("paletteLocalizationId", paletteLocalizationId).getResultList();
+		return (List<Palette>) sessionFactory.getCurrentSession().createQuery("SELECT DISTINCT pal FROM Palette pal "+
+				"JOIN FETCH pal.items item " + 
+				" JOIN FETCH item.idItemsKind   "+
+				" JOIN  FETCH  pal.users  "+
+				"JOIN FETCH pal.place    "+
+				"WHERE pal.id = item.idPaleta "+
+				"AND pal.place.id =:paletteLocalizationId")
+				.setParameter("paletteLocalizationId", paletteLocalizationId).getResultList();
+	}
+
+
+	@Override
+	public void insert(Palette palette) {
+		sessionFactory.getCurrentSession().persist(palette);;
+		
 	}
 
 }

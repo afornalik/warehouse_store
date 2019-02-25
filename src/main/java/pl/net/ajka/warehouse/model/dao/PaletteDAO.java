@@ -14,5 +14,7 @@ public interface PaletteDAO {
 	
 	public List<String> getAllLocalisations();
 	
+	public void insert(Palette palette);
+	
 	
 }

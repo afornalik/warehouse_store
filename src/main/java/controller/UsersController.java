@@ -1,4 +1,4 @@
-package pl.net.ajka.warehouse.controller;
+package controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +27,7 @@ import pl.net.ajka.warehouse.service.UsersService;
 public class UsersController {
 
 		private ItemsAmountService itemsAmountService;
-		private UsersService userService;
+		private UsersService usersService;
 		private TestService testService;
 		private ItemsService itemsService;
 		private PaletteService paletteService;
@@ -46,9 +46,9 @@ public class UsersController {
 		}
 		
 		@Autowired(required = true)
-		@Qualifier(value = "userService")
-		public void setUserService( UsersService us) {
-			this.userService = us;
+		@Qualifier(value = "usersService")
+		public void setUsersService( UsersService us) {
+			this.usersService = us;
 		}
 		
 		@Autowired(required = true)
@@ -122,7 +122,7 @@ public class UsersController {
 		@RequestMapping(value = "/users", method = RequestMethod.GET)
 		public String listPersons(Model model) {
 			model.addAttribute("user",new Users());
-			model.addAttribute("listUser", this.userService.userlist());
+			model.addAttribute("listUser", this.usersService.userlist());
 			return "users";
 		}
 
@@ -130,23 +130,23 @@ public class UsersController {
 		public String addUsers(@ModelAttribute("user") Users user) {
 			System.out.println("aaaAAAAAAAAA"+ user);
 			if (user.getId() == 0) {
-				this.userService.addUser(user);
+				this.usersService.addUser(user);
 			}else {
-				this.userService.updateUser(user);
+				this.usersService.updateUser(user);
 			}
 			return "redirect:/users";
 		}
 		
 		@RequestMapping(value= "/remove/{id}")
 		public String removeUser(@PathVariable("id") int id ) {
-			this.userService.removeUser(id);
+			this.usersService.removeUser(id);
 			return "redirect:/users";
 		}
 		
 		@RequestMapping("/edit/{id}")
 		public String editUser(@PathVariable("id") int id,Model model) {
-			model.addAttribute("user" , this.userService.select(id));
-			model.addAttribute("listUser" , this.userService.userlist());
+			model.addAttribute("user" , this.usersService.select(id));
+			model.addAttribute("listUser" , this.usersService.userlist());
 			return "users";
 		}
 }

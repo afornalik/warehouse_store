@@ -42,4 +42,11 @@ public class PaletteServiceImpl implements PaletteService{
 		return paletteDAO.selectByTheShelf(paletteLocalizationId);
 	}
 
+	@Transactional
+	@Override
+	public void insert(Palette palette) {
+		paletteDAO.insert(palette);
+		
+	}
+
 }
