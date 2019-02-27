@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pl.net.ajka.warehouse.dao.PaletteDAO;
 import pl.net.ajka.warehouse.model.Palette;
-import pl.net.ajka.warehouse.model.dao.PaletteDAO;
 import pl.net.ajka.warehouse.service.PaletteService;
 
 @Service

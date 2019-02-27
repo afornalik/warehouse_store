@@ -74,14 +74,6 @@
 		<beans:property name="usersDAO" ref="usersDAO" />
 	</beans:bean>	
 	
-	<!-- TestDAOImpl -->
-	<beans:bean id="testDAO" class="pl.net.ajka.warehouse.model.dao.impl.TestDAOImpl" >
-		<beans:property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
-	</beans:bean>
-
-	<beans:bean id="testService" class="pl.net.ajka.warehouse.service.impl.TestServiceImpl" >
-		<beans:property name="testDAO" ref="testDAO" />
-	</beans:bean>	
 
 	<!-- ItemsDAOImpl -->
 	<beans:bean id="itemsDAO" class="pl.net.ajka.warehouse.model.dao.impl.ItemsDAOImpl" >
