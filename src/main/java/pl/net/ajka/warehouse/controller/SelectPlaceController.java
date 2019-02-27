@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import pl.net.ajka.warehouse.model.Palette;
 import pl.net.ajka.warehouse.model.PaletteLocalization;
 import pl.net.ajka.warehouse.service.ItemsService;
 import pl.net.ajka.warehouse.service.PaletteLocalizationService;
@@ -44,8 +45,9 @@ public class SelectPlaceController {
 	@RequestMapping(value="/shelves",method=RequestMethod.GET)
 	public String selectPlace(Model model) {
 		
+	
 		model.addAttribute("shelves",paletteLocalizationService.selectAllName());
-		return "showPlace";
+		return "showplace";
 	}
 	
 	@RequestMapping(value="/shelves",method=RequestMethod.POST)
@@ -68,6 +70,6 @@ public class SelectPlaceController {
 		model.addAttribute("selected","wybrałęś : "+item);
 		
 		model.addAttribute("maploc",itemsService.selectAllPaletteFromShelve(item));*/
-		return "showPlace";
+		return "showplace";
 	}
 }

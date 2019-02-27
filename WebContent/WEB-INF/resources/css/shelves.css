@@ -1,11 +1,11 @@
 @charset "UTF-8";
 
 table {
-	 border-collapse: collapse;
+	
     border-spacing: 0;
 }
 td{
-	
+	border:solid 2px black;
 	padding:0px;
 	margin: 0px;
 }
@@ -20,7 +20,7 @@ td{
 .paletteHolder {
 	margin:0;
 	padding:0;
-	border: none;
+	
 	border-top: solid 10px orange;
 	height: 160px;
 	width: 120px;
@@ -39,6 +39,12 @@ td{
 	height:100%;
 	width:100%;
 	background-color:gray;
+	
+}
+ul ,li {
+	padding:0px;
+	margin:0px;
+	margin-left: 10px;
 }
 
 

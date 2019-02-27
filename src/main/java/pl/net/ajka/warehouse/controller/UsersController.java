@@ -15,20 +15,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import pl.net.ajka.warehouse.model.Palette;
-import pl.net.ajka.warehouse.model.Test;
 import pl.net.ajka.warehouse.model.Users;
 import pl.net.ajka.warehouse.service.ItemsAmountService;
 import pl.net.ajka.warehouse.service.ItemsService;
 import pl.net.ajka.warehouse.service.PaletteService;
-import pl.net.ajka.warehouse.service.TestService;
 import pl.net.ajka.warehouse.service.UsersService;
 
 @Controller
 public class UsersController {
 
 		private ItemsAmountService itemsAmountService;
-		private UsersService userService;
-		private TestService testService;
+		private UsersService usersService;
+		
 		private ItemsService itemsService;
 		private PaletteService paletteService;
 		private Logger logger = LoggerFactory.getLogger(UsersController.class);
@@ -46,16 +44,12 @@ public class UsersController {
 		}
 		
 		@Autowired(required = true)
-		@Qualifier(value = "userService")
-		public void setUserService( UsersService us) {
-			this.userService = us;
+		@Qualifier(value = "usersService")
+		public void setUsersService( UsersService us) {
+			this.usersService = us;
 		}
 		
-		@Autowired(required = true)
-		@Qualifier(value = "testService")
-		public void setTestService( TestService ts) {
-			this.testService = ts;
-		}
+		
 		
 		@Autowired(required= true)
 		@Qualifier(value ="itemsAmountService")
@@ -77,40 +71,7 @@ public class UsersController {
 			
 		}
 		
-		
-		
-		@RequestMapping(value="/test", method=RequestMethod.GET)
-		public String goTest(Model model) {
-		/*	int i = 0;
-			for (Test t :testService.getAll()) {
-				i++;
-				if (i == 5) {
-					testService.remove(t);
-				}
-			}*/
-			
-			model.addAttribute("test",testService.getAll());
-			
-			model.addAttribute("test2", new Test());
-			model.addAttribute("test3", new Test());
-			
-			return "test";
-		}
-		
-		@RequestMapping(value="/test",method=RequestMethod.POST)
-		public String addTest(@ModelAttribute("test2") Test t , Model model ) {
-			testService.save(t);
-			
-			
-			return "redirect:/test";
-		}
-		
-		@RequestMapping(value="/test/remove/{id}")
-		public String remTest(@PathVariable int id, Model model2) {
-			testService.remove(id);
-			
-			return "redirect:/test";
-		}
+	
 		
 		@RequestMapping(value= {"/","/index"})
 		public String goIndex(Model model) {
@@ -122,7 +83,7 @@ public class UsersController {
 		@RequestMapping(value = "/users", method = RequestMethod.GET)
 		public String listPersons(Model model) {
 			model.addAttribute("user",new Users());
-			model.addAttribute("listUser", this.userService.userlist());
+			model.addAttribute("listUser", this.usersService.userlist());
 			return "users";
 		}
 
@@ -130,23 +91,23 @@ public class UsersController {
 		public String addUsers(@ModelAttribute("user") Users user) {
 			System.out.println("aaaAAAAAAAAA"+ user);
 			if (user.getId() == 0) {
-				this.userService.addUser(user);
+				this.usersService.addUser(user);
 			}else {
-				this.userService.updateUser(user);
+				this.usersService.updateUser(user);
 			}
 			return "redirect:/users";
 		}
 		
 		@RequestMapping(value= "/remove/{id}")
 		public String removeUser(@PathVariable("id") int id ) {
-			this.userService.removeUser(id);
+			this.usersService.removeUser(id);
 			return "redirect:/users";
 		}
 		
 		@RequestMapping("/edit/{id}")
 		public String editUser(@PathVariable("id") int id,Model model) {
-			model.addAttribute("user" , this.userService.select(id));
-			model.addAttribute("listUser" , this.userService.userlist());
+			model.addAttribute("user" , this.usersService.select(id));
+			model.addAttribute("listUser" , this.usersService.userlist());
 			return "users";
 		}
 }

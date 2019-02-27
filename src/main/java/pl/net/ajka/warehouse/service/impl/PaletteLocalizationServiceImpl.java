@@ -5,8 +5,8 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pl.net.ajka.warehouse.dao.PaletteLocalizationDAO;
 import pl.net.ajka.warehouse.model.PaletteLocalization;
-import pl.net.ajka.warehouse.model.dao.PaletteLocalizationDAO;
 import pl.net.ajka.warehouse.service.PaletteLocalizationService;
 
 @Service

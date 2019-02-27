@@ -13,4 +13,8 @@ public interface PaletteService {
 	public List<String> getItemsNameOnPallete(int id);
 	
 	public List<String> getAllLocalisations();
+	
+
+	public void insert(Palette palette);
+	
 }

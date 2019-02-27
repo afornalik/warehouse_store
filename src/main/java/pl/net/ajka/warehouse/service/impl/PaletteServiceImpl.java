@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pl.net.ajka.warehouse.dao.PaletteDAO;
 import pl.net.ajka.warehouse.model.Palette;
-import pl.net.ajka.warehouse.model.dao.PaletteDAO;
 import pl.net.ajka.warehouse.service.PaletteService;
 
 @Service
@@ -40,6 +40,13 @@ public class PaletteServiceImpl implements PaletteService{
 	@Override
 	public List<Palette> selectByTheShelf(int paletteLocalizationId) {
 		return paletteDAO.selectByTheShelf(paletteLocalizationId);
+	}
+
+	@Transactional
+	@Override
+	public void insert(Palette palette) {
+		paletteDAO.insert(palette);
+		
 	}
 
 }
