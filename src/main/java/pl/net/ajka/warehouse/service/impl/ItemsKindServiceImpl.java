@@ -29,6 +29,12 @@ public class ItemsKindServiceImpl implements ItemsKindService{
 	public List<ItemsKind> selectAll() {
 		return itemsKindDAO.selectAll();
 	}
+
+	@Transactional
+	@Override
+	public void insert(ItemsKind itemsKind) {
+		itemsKindDAO.insert(itemsKind);
+	}
 	
 	
 

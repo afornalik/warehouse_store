@@ -9,4 +9,6 @@ public interface ItemsKindService {
 	public ItemsKind select(int id);
 	
 	public List<ItemsKind> selectAll();
+	
+	public void insert(ItemsKind itemsKind);
 }
