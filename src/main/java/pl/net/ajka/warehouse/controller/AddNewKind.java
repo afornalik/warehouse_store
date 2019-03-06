@@ -42,7 +42,7 @@ public class AddNewKind {
 	@RequestMapping(value="/addnewkind", method= RequestMethod.GET)
 	public String addNewKind(@ModelAttribute("addNewKind")ItemsKind itemsKind,BindingResult bindingResult,Model model) {
 			itemsKind.setAddDate(new Date());
-			itemsKind.setUsers(usersService.select(2));
+			itemsKind.setUser(usersService.select(2));
 			
 			return "addnewkind";
 	}
