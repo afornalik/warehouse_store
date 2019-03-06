@@ -10,4 +10,5 @@ public interface ItemsKindDAO {
 	
 	public List<ItemsKind> selectAll();
 
+	public void insert(ItemsKind itemsKind);
 }
