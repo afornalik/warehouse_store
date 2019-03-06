@@ -39,12 +39,12 @@ public class Items {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="who_add",foreignKey=@ForeignKey(name="items_ibfk_1"))
-	private Users whoAdd;
+	private Users users;
 
 	@OneToMany(mappedBy="items" , fetch=FetchType.LAZY, cascade=CascadeType.REMOVE)
 	private Set<ItemsAmount> itemsAmount;
 	
-	/*Constructors*/
+	
 	
 
 
@@ -52,17 +52,17 @@ public class Items {
 		
 	}
 		
-	public Items(ItemsKind idItemsKind, Palette idPaleta, Date addDate, Users whoAdd) {
+	public Items(ItemsKind idItemsKind, Palette idPaleta, Date addDate, Users users) {
 		
 		this.idItemsKind = idItemsKind;
 		this.idPaleta = idPaleta;
 		this.addDate = addDate;
-		this.whoAdd = whoAdd;
+		this.users = users;
 	}
 
 
 	
-	/*Setters and Getters*/
+	
 		
 	public int getId() {
 		return id;
@@ -98,12 +98,12 @@ public class Items {
 		this.addDate = addDate;
 	}
 
-	public Users getWhoAdd() {
-		return whoAdd;
+	public Users getUsers() {
+		return users;
 	}
 
-	public void setWhoAdd(Users who_add) {
-		this.whoAdd = who_add;
+	public void setUsers(Users users) {
+		this.users = users;
 	}
 	
 	public Set<ItemsAmount> getItemsAmount() {
@@ -118,6 +118,6 @@ public class Items {
 	@Override
 	public String toString() {
 		return "Items [id=" + id + ", idItemKind=" + idItemsKind + ", idPaleta=" + idPaleta + ", add_date=" + addDate
-				+ ", who_add=" + whoAdd + "]";
+				+ ", who_add=" + users + "]";
 	}
 }

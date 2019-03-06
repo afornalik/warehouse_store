@@ -81,7 +81,7 @@ public class UsersController {
 		}
 		
 		@RequestMapping(value = "/users", method = RequestMethod.GET)
-		public String listPersons(Model model) {
+		public String listPersons(@ModelAttribute("test2")Users users,Model model) {
 			model.addAttribute("user",new Users());
 			model.addAttribute("listUser", this.usersService.userlist());
 			return "users";

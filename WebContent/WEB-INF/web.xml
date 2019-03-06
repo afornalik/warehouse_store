@@ -3,7 +3,7 @@
   <display-name>warehouse_store</display-name>
   <filter>
   	<filter-name>encodingFilter</filter-name>
-  	<filter-class>filters.EncodingFilter</filter-class>
+  	<filter-class>pl.net.ajka.warehouse.filters.EncodingFilter</filter-class>
   </filter>
   <filter-mapping>
   	<filter-name>encodingFilter</filter-name>
