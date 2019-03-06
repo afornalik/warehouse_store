@@ -38,6 +38,13 @@ public class ItemsKindDAOImpl  implements ItemsKindDAO{
 		Root<ItemsKind> root = criteriaQuery.from(ItemsKind.class);
 		criteriaQuery.select(root);
 		return (List<ItemsKind>) entityManager.createQuery(criteriaQuery).getResultList();
+		
+	}
+
+	@Override
+	public void insert(ItemsKind itemsKind) {
+		Session session = sessionFactory.getCurrentSession();
+		session.save("ItemsKind", itemsKind);
 	}
 
 }

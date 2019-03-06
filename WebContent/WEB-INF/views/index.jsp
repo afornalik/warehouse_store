@@ -22,8 +22,8 @@
 		</div>
 		<div class="navbar">
 			<ul class="menubar">
-				<li ><a class="menulink" href="">towar</a></li>
-				<li ><a class="menulink" href="">palety</a></li>
+				<li ><a class="menulink" href="/warehouse_store/shelves">przeglądaj towar</a></li>
+				<li ><a class="menulink" href="/warehouse_store/addnewkind">dodaj produkt</a></li>
 				<li ><a class="menulink" href="/warehouse_store/users" >użytkownicy</a></li>
 				<li ><a class="menulink" href="">zmiany </a></li>
 				<li ><a class="menulink" href="">schemat</a></li>
