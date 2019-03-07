@@ -63,7 +63,7 @@ public class AddPaletteController {
 	public void setUsersService( UsersService us) {
 		this.usersService = us;
 	}
-	
+
 	
 	@RequestMapping(value="/addpalette", method=RequestMethod.POST)
 	public String addPalette(@ModelAttribute(value="item")Items item,@RequestParam(value="axis", required=false) String axis, Model model) {

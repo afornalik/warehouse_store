@@ -21,9 +21,7 @@ import javax.persistence.Table;
 public class Palette implements Serializable {
 
 	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -57,9 +55,8 @@ public class Palette implements Serializable {
 	@ManyToMany(mappedBy="palette", fetch=FetchType.LAZY)
 	private Set<ItemsKind> itemsKind;
 	
-	/*Constructors*/
-	
 
+	
 	public Palette() {
 		super();
 	}
@@ -76,16 +73,12 @@ public class Palette implements Serializable {
 	}
 
 
-
-
-	/*Setters and Getters*/
 	
 	public int getId() {
 		return id;
 	}
 
 	
-
 	public void setId(int id) {
 		this.id = id;
 	}

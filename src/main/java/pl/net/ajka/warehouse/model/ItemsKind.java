@@ -23,7 +23,7 @@ public class ItemsKind {
 	
 	@Id
 	@Column(name="id_item_kind")
-	@GeneratedValue (strategy=GenerationType.AUTO)
+	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name="index_code")
@@ -111,11 +111,11 @@ public class ItemsKind {
 	}
 
 
-	public Users getUser() {
+	public Users getUsers() {
 		return users;
 	}
 
-	public void setUser(Users idUser) {
+	public void setUsers(Users idUser) {
 		this.users = idUser;
 	}
 
